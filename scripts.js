@@ -42,12 +42,4 @@ app.controller("myController", function ($scope) {
         $scope.users.splice(this.$index, 1);
     };
 
-    $scope.getTemplate = function (user) {
-        if(user.name === $scope.selected.name) {
-            return 'edit';
-        }
-        else 
-            return 'display';
-    }
-
 });
