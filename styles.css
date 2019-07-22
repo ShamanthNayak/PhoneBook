@@ -1,0 +1,24 @@
+body { 
+    padding: 0; margin: 0;
+}
+
+form { 
+    max-width: 35em; margin: 1em auto;
+}
+
+table {
+    border: 1px solid gray;
+}
+
+.valign {
+    vertical-align: middle;
+}
+
+.banner {
+    font-family: Arial, sans-serif;
+}
+
+.search {
+    margin: 20px 0px 20px 0px;
+}
+

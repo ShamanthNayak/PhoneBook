@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>PhoneBook</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+</head>
+
+<body ng-app="myApp" ng-controller="myController">
+    <nav class="navbar navbar-light bg-light">
+        <img src="contacts_48dp.png">
+        <a class="navbar-brand mr-auto banner" href="#">Contacts</a>
+    </nav>
+    <div class="container">
+        <form class="form-inline search">
+            <div class="form-group">
+                <div>
+                    <input type="text" class="form-control" placeholder="Search contact" name="search" size="40px" ng-model="searchName">
+                    <i class="material-icons valign">search</i>
+                </div>
+            </div>
+        </form>
+
+        <table class="table table-hower">
+            <thead class="thead-dark">
+                <tr class="text-center">
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Phone number</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody class="text-center">
+                <tr ng-repeat="user in users | filter:searchName">
+                    <td>{{$index+1}}</td>
+                    <td>{{user.name}}</td>
+                    <td>{{user.number}}</td> 
+                    <td><a href="#" ng-click="removeItem()"><i class="material-icons">delete</i></a><a href="#" ng-click=""><i class="material-icons">edit</i></a></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <form class="form-inline">
+            <div class="row">
+                <div class="form-group">
+                    <input ng-model="newUser.name" class="form-control" placeholder="Name">
+                </div>
+                <div class="form-group col-auto">
+                    <input ng-model="newUser.number" class="form-control" placeholder="Phone number">
+                </div>
+                <button class="btn btn-sm btn-primary col-auto" ng-click="addUser()">Create New</button>
+            </div>
+        </form>
+
+    </div>
+
+    <script src="scripts.js"></script>
+</body></html>
