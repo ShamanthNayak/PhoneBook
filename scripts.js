@@ -31,7 +31,7 @@ app.controller("myController", function ($scope) {
 			number: "8324423748"
         }
         ];
-	
+
 	$scope.errorText = "Create new contact";
 
 
@@ -44,7 +44,7 @@ app.controller("myController", function ($scope) {
 		angular.forEach($scope.users, function (user) {
 
 			if (angular.lowercase(user.name) == angular.lowercase($scope.newUser.name)) {
-				$scope.errorText="Error: User already Exists";
+				$scope.errorText = "Error: User already Exists";
 				$scope.flag = true;
 			}
 		});
@@ -59,5 +59,23 @@ app.controller("myController", function ($scope) {
 	$scope.removeItem = function () {
 		$scope.users.splice(this.$index, 1);
 	};
+
+	$scope.editItem = function () {
+		$scope.index = this.$index;
+		$scope.showMe = function (indx) {
+			if (indx == $scope.index) {
+				return true;
+			}
+		}
+	}
+
+	$scope.saveItem = function () {
+		$scope.index = this.$index;
+		$scope.showMe = function (indx) {
+			if (indx == $scope.index) {
+				return false;
+			}
+		}
+	}
 
 });
