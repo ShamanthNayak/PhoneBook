@@ -8,6 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/x-icon" href="favicon.ico">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.6/css/mdb.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
@@ -15,41 +16,47 @@
 </head>
 
 <body ng-app="myApp" ng-controller="myController">
-	<nav class="navbar navbar-light bg-light">
-		<img src="static/contacts_48dp.png">
-		<a class="navbar-brand mr-auto banner" href="#">Contacts</a>
-	</nav>
+	<div class="jumbotron jumbo-padding">
+		<div class="form-inline jumbo-ele">
+			<img src="static/contacts_48dp.png">
+			<h4 class="display-4 banner-text">PhoneBook</h4>
+		</div>
+	</div>
 	<div class="container">
 		<form class="form-inline search">
 			<div class="form-group">
-				<div>
-					<input type="text" class="form-control" placeholder="Search contact" name="search" size="40px" ng-model="searchName">
+				<div class="md-form">
+					<input type="text" class="form-control" size="50em" id="search" ng-model="searchName">
+					<label for="search">Search Contact</label>
 					<i class="material-icons valign">search</i>
 				</div>
 			</div>
 		</form>
 
-		<table class="table table-hower">
-			<thead class="thead-dark">
-				<tr class="text-center">
-					<th>#</th>
-					<th>Name</th>
-					<th>Phone number</th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody class="text-center">
-				<tr ng-repeat="user in users | filter:searchName">
-					<td>{{$index+1}}</td>
-					<td><span ng-hide="showMe($index)">{{user.name}}</span><input text="text" class="form-control" ng-model="user.name" ng-show="showMe($index)"></td>
-					<td><span ng-hide="showMe($index)">{{user.number}}</span><input text="text" class="form-control input-sm" ng-model="user.number" ng-show="showMe($index)"></td>
-					<td><a href="#" ng-click="removeItem()"><i class="material-icons">delete</i></a>
-						<a href="#" ng-click="editItem()" ng-hide="showMe($index)"><i class="material-icons">edit</i></a>
-						<a href="#" ng-click="saveItem()" ng-show="showMe($index)"><i class="material-icons">save</i></a>
-					</td>
-				</tr>
-			</tbody>
-		</table>
+		<div class="card">
+			<table class="table">
+				<thead class="thead-dark">
+					<tr class="text-center">
+						<th>#</th>
+						<th>Name</th>
+						<th>Phone number</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody class="text-center">
+					<tr ng-repeat="user in users | filter:searchName">
+						<td>{{$index+1}}</td>
+						<td><span ng-hide="showMe($index)">{{user.name}}</span><input text="text" class="form-control" ng-model="user.name" ng-show="showMe($index)"></td>
+						<td><span ng-hide="showMe($index)">{{user.number}}</span><input text="text" class="form-control input-sm" ng-model="user.number" ng-show="showMe($index)"></td>
+						<td><a href="#" ng-click="removeItem()"><i class="material-icons">delete</i></a>
+							<a href="#" ng-click="editItem()" ng-hide="showMe($index)"><i class="material-icons">edit</i></a>
+							<a href="#" ng-click="saveItem()" ng-show="showMe($index)"><i class="material-icons">save</i></a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<hr>
 		<h4 class="text-center text-primary">{{errorText}}</h4>
 
 		<form class="form-inline">
@@ -60,12 +67,24 @@
 				<div class="form-group col-auto">
 					<input type="number" ng-model="newUser.number" class="form-control" placeholder="Phone number" required>
 				</div>
-				<button class="btn btn-sm btn-primary col-auto" ng-click="addUser()">Create New</button>
+				<button class="btn btn-md btn-primary col-auto" ng-click="addUser()">Create New</button>
 			</div>
 		</form>
 	</div>
 
 	<script src="scripts.js"></script>
-</body>
 
-</html>
+	<!-- JQuery -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<!-- Bootstrap tooltips -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+	<!-- Bootstrap core JavaScript -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<!-- MDB core JavaScript -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.6/js/mdb.min.js"></script>
+
+	<!-- 1.Jumbotron element center-->
+
+
+
+</body></html>
